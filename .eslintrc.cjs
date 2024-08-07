@@ -17,6 +17,5 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    // Add or modify rules as needed for your Chrome extension project
   },
 }
