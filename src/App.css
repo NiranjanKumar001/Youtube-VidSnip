@@ -87,7 +87,7 @@ button::before {
   left: 50%;
   width: 300%;
   height: 300%;
-  background-color: #ff5e00;
+  background-color: #ff2600;
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: transform 0.7s ease-in-out;
@@ -105,7 +105,7 @@ button::after {
   left: 50%;
   width: 300%;
   height: 300%;
-  background-color: #e51313;
+  background-color: #ff0011;
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: transform 0.7s ease-in-out 0.3s;
