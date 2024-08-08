@@ -87,7 +87,7 @@ button::before {
   left: 50%;
   width: 300%;
   height: 300%;
-  background-color: #ff2600;
+  background-color: #ff5500;
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: transform 0.7s ease-in-out;
