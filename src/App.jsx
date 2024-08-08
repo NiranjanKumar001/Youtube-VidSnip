@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import './App.css';
+import downloadIcon from './assets/download-icon.svg';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [videoUrl, setVideoUrl] = useState('');
+  const [inputUrl, setInputUrl] = useState('');
+
+  const handleDownload = () => {
+    if (!inputUrl) {
+      alert('Please enter a valid YouTube URL.');
+      return;
+    }
+    // Implement your video URL fetching logic here
+    // For demonstration purposes, let's assume inputUrl is valid and the video URL is fetched
+    setVideoUrl(inputUrl);
+    chrome.downloads.download({ url: inputUrl, filename: 'video.mp4' });
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <div className="app-container">
+      <h1 className="app-title">VidSnip</h1>
+      <div className="input-group">
+        <input
+          type="text"
+          placeholder="Enter YouTube URL"
+          value={inputUrl}
+          onChange={(e) => setInputUrl(e.target.value)}
+          className="url-input"
+        />
+        <button className="download-button" onClick={handleDownload}>
+          <img src={downloadIcon} alt="Download" className="download-icon" /> Download 
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      {videoUrl && (
+        <p className="video-url">
+          Video URL: <a href={videoUrl} target="_blank" rel="noopener noreferrer">{videoUrl}</a>
+        </p>
+      )}
+    </div>
+  );
+};
 
-export default App
+export default App;
